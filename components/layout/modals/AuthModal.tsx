@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { LogIn, UserPlus, X } from "lucide-react";
+import { toast } from "sonner";
 import type { AuthModalProps } from "@/types/modals";
 import {
   loginSchema,
@@ -33,6 +34,9 @@ function LoginForm() {
   function onSubmit(values: LoginFormValues) {
     // TODO: need to connect login with Supabase
     console.log("login", values);
+    toast.success("Welcome back!", {
+      description: "You're now signed in.",
+    });
   }
 
   return (
@@ -86,6 +90,9 @@ function SignupForm() {
   function onSubmit(values: SignupFormValues) {
     // TODO: need to connect sign up with Supabase
     console.log("signup", values);
+    toast.success(`Welcome, ${values.name.split(" ")[0]}!`, {
+      description: "Your account has been created.",
+    });
   }
 
   return (

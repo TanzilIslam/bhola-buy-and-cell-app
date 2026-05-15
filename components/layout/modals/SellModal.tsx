@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
+import { toast } from "sonner";
 import type { SellModalProps } from "@/types/modals";
 import { sellFormSchema, type SellFormValues } from "@/types/validationSchema";
 
@@ -51,6 +52,9 @@ export const SellModal = ({ isOpen, onClose }: SellModalProps) => {
     console.log(values);
     form.reset();
     onClose();
+    toast.success("Listing posted!", {
+      description: `"${values.productName}" is now live in the marketplace.`,
+    });
   }
 
   if (!isOpen) return null;

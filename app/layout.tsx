@@ -6,6 +6,7 @@ import { BottomNav } from "@/components/layout/bottom-nav";
 import { Navbar } from "@/components/layout/navbar";
 import { Sidebar } from "@/components/layout/sidebar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { ToastProvider } from "@/components/layout/toast-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ToastProvider />
           <Sidebar />
           <BottomNav />
           {/* lg:pl-14 clears the sidebar on desktop; pb-24 clears the bottom nav on mobile/tablet */}
