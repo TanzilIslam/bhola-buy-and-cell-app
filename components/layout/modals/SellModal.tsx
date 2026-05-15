@@ -1,6 +1,10 @@
 "use client";
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -19,8 +23,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { X } from "lucide-react";
-import { toast } from "sonner";
+import { cn } from "@/lib/utils";
+import { ImageIcon, Upload, X } from "lucide-react";
 import type { SellModalProps } from "@/types/modals";
 import { sellFormSchema, type SellFormValues } from "@/types/validationSchema";
 
@@ -35,8 +39,132 @@ const PRODUCT_CATEGORIES = [
   "Other",
 ] as const;
 
-// Modal shown when the user clicks "Want to Sell"
+// ─── Image Upload ─────────────────────────────────────────────────────────────
+
+function ImageUpload({
+  value,
+  onChange,
+}: {
+  value: File | null;
+  onChange: (file: File | null) => void;
+}) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!value) {
+      setPreviewUrl(null);
+      return;
+    }
+    const url = URL.createObjectURL(value);
+    setPreviewUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [value]);
+
+  function handleDragOver(e: React.DragEvent) {
+    e.preventDefault();
+    setIsDragging(true);
+  }
+  function handleDragLeave() {
+    setIsDragging(false);
+  }
+  function handleDrop(e: React.DragEvent) {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files[0];
+    if (file?.type.startsWith("image/")) onChange(file);
+  }
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) onChange(file);
+    e.target.value = "";
+  }
+
+  if (previewUrl && value) {
+    return (
+      <div className="relative h-40 rounded-xl overflow-hidden border border-border bg-muted">
+        <Image
+          src={previewUrl}
+          alt="Product preview"
+          fill
+          sizes="100%"
+          className="object-cover"
+        />
+        {/* Gradient overlay for text */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        {/* File info */}
+        <div className="absolute bottom-0 left-0 right-0 px-3 py-2">
+          <p className="text-white text-xs font-medium truncate">{value.name}</p>
+          <p className="text-white/70 text-[10px]">
+            {(value.size / 1024 / 1024).toFixed(1)} MB
+          </p>
+        </div>
+        {/* Remove button */}
+        <button
+          type="button"
+          onClick={() => onChange(null)}
+          className="absolute top-2 right-2 size-7 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors"
+          aria-label="Remove image"
+        >
+          <X className="size-3.5" />
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => inputRef.current?.click()}
+      onKeyDown={(e) => e.key === "Enter" && inputRef.current?.click()}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+      className={cn(
+        "h-40 flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed cursor-pointer transition-all select-none",
+        isDragging
+          ? "border-primary bg-primary/5 scale-[0.99]"
+          : "border-border hover:border-primary/50 hover:bg-muted/50"
+      )}
+    >
+      <div
+        className={cn(
+          "size-11 rounded-xl flex items-center justify-center transition-colors",
+          isDragging ? "bg-primary/15" : "bg-muted"
+        )}
+      >
+        {isDragging ? (
+          <Upload className="size-5 text-primary" />
+        ) : (
+          <ImageIcon className="size-5 text-muted-foreground" />
+        )}
+      </div>
+      <div className="text-center">
+        <p className="text-sm font-medium">
+          {isDragging ? "Drop it here" : "Click or drag to upload"}
+        </p>
+        <p className="text-xs text-muted-foreground mt-0.5">
+          PNG, JPG, WebP — up to 10 MB
+        </p>
+      </div>
+      <input
+        ref={inputRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={handleFileChange}
+      />
+    </div>
+  );
+}
+
+// ─── Sell Modal ───────────────────────────────────────────────────────────────
+
 export const SellModal = ({ isOpen, onClose }: SellModalProps) => {
+  const [imageFile, setImageFile] = useState<File | null>(null);
+
   const form = useForm<SellFormValues>({
     resolver: zodResolver(sellFormSchema),
     defaultValues: {
@@ -49,8 +177,10 @@ export const SellModal = ({ isOpen, onClose }: SellModalProps) => {
 
   function onSubmit(values: SellFormValues) {
     // TODO: need to connect save in supabase
-    console.log(values);
+    // TODO: upload imageFile to Supabase Storage and store the returned URL
+    console.log(values, imageFile);
     form.reset();
+    setImageFile(null);
     onClose();
     toast.success("Listing posted!", {
       description: `"${values.productName}" is now live in the marketplace.`,
@@ -136,7 +266,16 @@ export const SellModal = ({ isOpen, onClose }: SellModalProps) => {
               )}
             />
 
-            {/* Asking price — valueAsNumber converts the input string to a number for zod */}
+            {/* Photo */}
+            <div className="grid gap-1.5">
+              <label className="text-sm font-medium leading-none">
+                Photo{" "}
+                <span className="text-muted-foreground font-normal">(optional)</span>
+              </label>
+              <ImageUpload value={imageFile} onChange={setImageFile} />
+            </div>
+
+            {/* Asking price */}
             <FormField
               control={form.control}
               name="price"
