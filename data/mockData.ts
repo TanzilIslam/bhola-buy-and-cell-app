@@ -203,6 +203,8 @@ export interface BuyRequest {
   id: string;
   userName: string;
   userAvatar: string;
+  userPhone: string;
+  userEmail: string;
   productCategory: ProductCategory;
   productName: string;
   description?: string;
@@ -215,6 +217,8 @@ export interface SellListing {
   id: string;
   userName: string;
   userAvatar: string;
+  userPhone: string;
+  userEmail: string;
   productCategory: ProductCategory;
   productName: string;
   description?: string;
@@ -230,6 +234,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-1",
     userName: "Alex Johnson",
     userAvatar: "https://i.pravatar.cc/150?img=11",
+    userPhone: "+1 212-555-0101",
+    userEmail: "alex.johnson@email.com",
     productCategory: "Laptop",
     productName: "MacBook Pro 14-inch M3",
     description:
@@ -242,6 +248,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-2",
     userName: "Sarah Lee",
     userAvatar: "https://i.pravatar.cc/150?img=5",
+    userPhone: "+1 718-555-0102",
+    userEmail: "sarah.lee@email.com",
     productCategory: "Phone",
     productName: "iPhone 15 Pro",
     description:
@@ -254,6 +262,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-3",
     userName: "Marcus Brown",
     userAvatar: "https://i.pravatar.cc/150?img=17",
+    userPhone: "+1 718-555-0103",
+    userEmail: "marcus.brown@email.com",
     productCategory: "Tablet",
     productName: "iPad Pro 12.9\" (2022+)",
     description:
@@ -266,6 +276,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-4",
     userName: "Priya Nair",
     userAvatar: "https://i.pravatar.cc/150?img=25",
+    userPhone: "+1 212-555-0104",
+    userEmail: "priya.nair@email.com",
     productCategory: "Camera",
     productName: "Sony A7 IV / A7C",
     description:
@@ -278,6 +290,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-5",
     userName: "Jordan Kim",
     userAvatar: "https://i.pravatar.cc/150?img=33",
+    userPhone: "+1 973-555-0105",
+    userEmail: "jordan.kim@email.com",
     productCategory: "Gaming Console",
     productName: "PlayStation 5 Disc Edition",
     description: "Standard disc edition only. Can pick up anywhere in NJ.",
@@ -289,6 +303,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-6",
     userName: "Olivia Chen",
     userAvatar: "https://i.pravatar.cc/150?img=47",
+    userPhone: "+1 201-555-0106",
+    userEmail: "olivia.chen@email.com",
     productCategory: "Desktop",
     productName: "Mac Mini M2 Pro",
     description:
@@ -304,6 +320,8 @@ export const sellListings: SellListing[] = [
     id: "sl-1",
     userName: "David Park",
     userAvatar: "https://i.pravatar.cc/150?img=12",
+    userPhone: "+1 212-555-0201",
+    userEmail: "david.park@email.com",
     productCategory: "Laptop",
     productName: "Dell XPS 15 (2023)",
     description:
@@ -319,6 +337,8 @@ export const sellListings: SellListing[] = [
     id: "sl-2",
     userName: "Nina Torres",
     userAvatar: "https://i.pravatar.cc/150?img=9",
+    userPhone: "+1 718-555-0202",
+    userEmail: "nina.torres@email.com",
     productCategory: "Phone",
     productName: "Samsung Galaxy S24 Ultra",
     description:
@@ -334,6 +354,8 @@ export const sellListings: SellListing[] = [
     id: "sl-3",
     userName: "Ethan Wright",
     userAvatar: "https://i.pravatar.cc/150?img=60",
+    userPhone: "+1 718-555-0203",
+    userEmail: "ethan.wright@email.com",
     productCategory: "Tablet",
     productName: "Samsung Galaxy Tab S9+",
     description:
@@ -349,6 +371,8 @@ export const sellListings: SellListing[] = [
     id: "sl-4",
     userName: "Aisha Malik",
     userAvatar: "https://i.pravatar.cc/150?img=44",
+    userPhone: "+1 212-555-0204",
+    userEmail: "aisha.malik@email.com",
     productCategory: "Camera",
     productName: "Canon EOS R6 Mark II",
     description:
@@ -364,6 +388,8 @@ export const sellListings: SellListing[] = [
     id: "sl-5",
     userName: "Carlos Rivera",
     userAvatar: "https://i.pravatar.cc/150?img=52",
+    userPhone: "+1 718-555-0205",
+    userEmail: "carlos.rivera@email.com",
     productCategory: "Gaming Console",
     productName: "Xbox Series X",
     description:
@@ -379,6 +405,8 @@ export const sellListings: SellListing[] = [
     id: "sl-6",
     userName: "Lily Zhang",
     userAvatar: "https://i.pravatar.cc/150?img=38",
+    userPhone: "+1 718-555-0206",
+    userEmail: "lily.zhang@email.com",
     productCategory: "TV",
     productName: 'LG C3 OLED 55"',
     description:

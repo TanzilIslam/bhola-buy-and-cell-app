@@ -10,9 +10,9 @@ import {
   CalendarDays,
   Eye,
   MapPin,
-  MessageCircle,
   ShoppingCart,
 } from "lucide-react";
+import { ContactCTA } from "@/components/ui/contact-cta";
 
 export default function RequestDetailPage({
   params,
@@ -109,25 +109,16 @@ export default function RequestDetailPage({
           </CardContent>
         </Card>
 
-        {/* Desktop CTA */}
-        <Button
-          size="lg"
-          className="w-full hidden lg:flex gap-2 font-semibold"
-        >
-          <MessageCircle className="size-4" />
-          Contact Buyer
-        </Button>
-      </div>
-
-      {/* Mobile / tablet sticky CTA — above bottom nav */}
-      <div className="lg:hidden fixed bottom-[90px] left-4 right-4 z-20">
-        <Button
-          size="lg"
-          className="w-full gap-2 font-semibold shadow-2xl shadow-primary/30"
-        >
-          <MessageCircle className="size-4" />
-          Contact Buyer
-        </Button>
+        <ContactCTA
+          contact={{
+            name: request.userName,
+            avatar: request.userAvatar,
+            phone: request.userPhone,
+            email: request.userEmail,
+          }}
+          product={request.productName}
+          role="buyer"
+        />
       </div>
     </main>
   );

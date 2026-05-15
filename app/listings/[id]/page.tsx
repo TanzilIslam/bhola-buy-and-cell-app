@@ -11,9 +11,9 @@ import {
   CalendarDays,
   Eye,
   MapPin,
-  MessageCircle,
   Tag,
 } from "lucide-react";
+import { ContactCTA } from "@/components/ui/contact-cta";
 
 export default function ListingDetailPage({
   params,
@@ -173,23 +173,17 @@ export default function ListingDetailPage({
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <Button size="lg" className="w-full hidden lg:flex gap-2 font-semibold">
-            <MessageCircle className="size-4" />
-            Contact Seller
-          </Button>
+          <ContactCTA
+            contact={{
+              name: listing.userName,
+              avatar: listing.userAvatar,
+              phone: listing.userPhone,
+              email: listing.userEmail,
+            }}
+            product={listing.productName}
+            role="seller"
+          />
         </div>
-      </div>
-
-      {/* Mobile / tablet sticky CTA — floats above the bottom nav */}
-      <div className="lg:hidden fixed bottom-[90px] left-4 right-4 z-20">
-        <Button
-          size="lg"
-          className="w-full gap-2 font-semibold shadow-2xl shadow-primary/30"
-        >
-          <MessageCircle className="size-4" />
-          Contact Seller
-        </Button>
       </div>
     </main>
   );
