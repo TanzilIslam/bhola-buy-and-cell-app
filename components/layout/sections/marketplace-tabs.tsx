@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { MapPin, ShoppingCart, Tag } from "lucide-react";
+import { ArrowRight, MapPin, ShoppingCart, Tag } from "lucide-react";
 import {
   buyRequests,
   sellListings,
@@ -24,58 +24,55 @@ import {
 
 function BuyRequestCard({ request }: { request: BuyRequest }) {
   return (
-    <Card className="flex flex-col h-full hover:shadow-md transition-shadow duration-200">
-      <CardHeader className="pb-3">
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex items-center gap-2.5">
-            <Avatar className="size-9 shrink-0">
-              <AvatarImage src={request.userAvatar} alt={request.userName} />
-              <AvatarFallback>{request.userName[0]}</AvatarFallback>
-            </Avatar>
-            <div>
-              <p className="font-medium text-sm leading-tight">{request.userName}</p>
-              <p className="text-xs text-muted-foreground">{request.postedAt}</p>
+    <Link href={`/requests/${request.id}`} className="block h-full group/card">
+      <Card className="flex flex-col h-full hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 cursor-pointer">
+        <CardHeader className="pb-3">
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex items-center gap-2.5">
+              <Avatar className="size-9 shrink-0">
+                <AvatarImage src={request.userAvatar} alt={request.userName} />
+                <AvatarFallback>{request.userName[0]}</AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="font-medium text-sm leading-tight">{request.userName}</p>
+                <p className="text-xs text-muted-foreground">{request.postedAt}</p>
+              </div>
             </div>
+            <Badge variant="secondary" className="shrink-0 flex items-center gap-1">
+              <ShoppingCart className="size-3" />
+              Buying
+            </Badge>
           </div>
-          <Badge
-            variant="secondary"
-            className="shrink-0 flex items-center gap-1"
-          >
-            <ShoppingCart className="size-3" />
-            Buying
-          </Badge>
-        </div>
-      </CardHeader>
+        </CardHeader>
 
-      <CardContent className="pb-3 flex-1">
-        <Badge className="mb-2 text-xs">{request.productCategory}</Badge>
-        <h3 className="font-semibold text-base mb-1 leading-snug">
-          {request.productName}
-        </h3>
-        {request.description && (
-          <p className="text-muted-foreground text-sm line-clamp-2">
-            {request.description}
-          </p>
-        )}
-      </CardContent>
+        <CardContent className="pb-3 flex-1">
+          <Badge className="mb-2 text-xs">{request.productCategory}</Badge>
+          <h3 className="font-semibold text-base mb-1 leading-snug group-hover/card:text-primary transition-colors">
+            {request.productName}
+          </h3>
+          {request.description && (
+            <p className="text-muted-foreground text-sm line-clamp-2">
+              {request.description}
+            </p>
+          )}
+        </CardContent>
 
-      <Separator />
+        <Separator />
 
-      <CardFooter className="pt-3 flex items-center justify-between gap-2">
-        <div className="flex items-center gap-1 text-xs text-muted-foreground min-w-0">
-          <MapPin className="size-3.5 shrink-0" />
-          <span className="truncate">
-            {request.viewingLocation === "my_place"
-              ? "At my place"
-              : "At seller's place"}{" "}
-            · {request.address}
-          </span>
-        </div>
-        <Button size="sm" variant="outline" className="shrink-0">
-          Contact
-        </Button>
-      </CardFooter>
-    </Card>
+        <CardFooter className="pt-3 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1 text-xs text-muted-foreground min-w-0">
+            <MapPin className="size-3.5 shrink-0" />
+            <span className="truncate">
+              {request.viewingLocation === "my_place"
+                ? "At my place"
+                : "At seller's place"}{" "}
+              · {request.address}
+            </span>
+          </div>
+          <ArrowRight className="size-4 text-muted-foreground shrink-0 group-hover/card:text-primary group-hover/card:translate-x-0.5 transition-all" />
+        </CardFooter>
+      </Card>
+    </Link>
   );
 }
 
@@ -83,62 +80,64 @@ function BuyRequestCard({ request }: { request: BuyRequest }) {
 
 function SellListingCard({ listing }: { listing: SellListing }) {
   return (
-    <Card className="flex flex-col h-full overflow-hidden hover:shadow-md transition-shadow duration-200 group">
-      {/* Product image */}
-      <div className="relative aspect-video overflow-hidden bg-muted">
-        <Image
-          src={listing.imageUrl}
-          alt={listing.productName}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
-        <Badge className="absolute top-2.5 left-2.5 shadow">
-          {listing.productCategory}
-        </Badge>
-      </div>
-
-      <CardContent className="p-4 flex-1">
-        <div className="flex items-start justify-between gap-2 mb-1.5">
-          <h3 className="font-semibold text-base leading-snug">
-            {listing.productName}
-          </h3>
-          <span className="text-primary font-bold text-lg whitespace-nowrap">
-            ${listing.price.toLocaleString()}
-          </span>
+    <Link href={`/listings/${listing.id}`} className="block h-full group/card">
+      <Card className="flex flex-col h-full overflow-hidden hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 cursor-pointer">
+        {/* Product image */}
+        <div className="relative aspect-video overflow-hidden bg-muted">
+          <Image
+            src={listing.imageUrl}
+            alt={listing.productName}
+            fill
+            className="object-cover group-hover/card:scale-105 transition-transform duration-300"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+          <Badge className="absolute top-2.5 left-2.5 shadow">
+            {listing.productCategory}
+          </Badge>
+          {/* Hover gradient */}
+          <div className="absolute inset-0 bg-black/0 group-hover/card:bg-black/10 transition-colors duration-300" />
         </div>
-        {listing.description && (
-          <p className="text-muted-foreground text-sm line-clamp-2">
-            {listing.description}
-          </p>
-        )}
-      </CardContent>
 
-      <Separator />
+        <CardContent className="p-4 flex-1">
+          <div className="flex items-start justify-between gap-2 mb-1.5">
+            <h3 className="font-semibold text-base leading-snug group-hover/card:text-primary transition-colors">
+              {listing.productName}
+            </h3>
+            <span className="text-primary font-bold text-lg whitespace-nowrap">
+              ${listing.price.toLocaleString()}
+            </span>
+          </div>
+          {listing.description && (
+            <p className="text-muted-foreground text-sm line-clamp-2">
+              {listing.description}
+            </p>
+          )}
+        </CardContent>
 
-      <CardFooter className="px-4 py-3 flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2 min-w-0">
-          <Avatar className="size-7 shrink-0">
-            <AvatarImage src={listing.userAvatar} alt={listing.userName} />
-            <AvatarFallback>{listing.userName[0]}</AvatarFallback>
-          </Avatar>
-          <div className="min-w-0">
-            <p className="text-sm font-medium truncate">{listing.userName}</p>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <MapPin className="size-3 shrink-0" />
-              <span className="truncate">
-                {listing.viewingLocation === "my_place"
-                  ? "At my place"
-                  : "At buyer's place"}
-              </span>
+        <Separator />
+
+        <CardFooter className="px-4 py-3 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <Avatar className="size-7 shrink-0">
+              <AvatarImage src={listing.userAvatar} alt={listing.userName} />
+              <AvatarFallback>{listing.userName[0]}</AvatarFallback>
+            </Avatar>
+            <div className="min-w-0">
+              <p className="text-sm font-medium truncate">{listing.userName}</p>
+              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <MapPin className="size-3 shrink-0" />
+                <span className="truncate">
+                  {listing.viewingLocation === "my_place"
+                    ? "At my place"
+                    : "At buyer's place"}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <Button size="sm" className="shrink-0">
-          Buy
-        </Button>
-      </CardFooter>
-    </Card>
+          <ArrowRight className="size-4 text-muted-foreground shrink-0 group-hover/card:text-primary group-hover/card:translate-x-0.5 transition-all" />
+        </CardFooter>
+      </Card>
+    </Link>
   );
 }
 
