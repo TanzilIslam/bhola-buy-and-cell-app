@@ -36,6 +36,7 @@ const formSchema = z.object({
   message: z.string(),
 });
 
+// Contact section: contact info on the left and a validated email form on the right
 export const ContactSection = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

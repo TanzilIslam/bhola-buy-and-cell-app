@@ -71,6 +71,7 @@ const plans: PlanProps[] = [
   },
 ];
 
+// Pricing section: three-tier plan cards (Free, Premium, Enterprise) with benefit lists
 export const PricingSection = () => {
   return (
     <section className="container py-24 sm:py-32">

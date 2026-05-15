@@ -21,6 +21,7 @@ interface SocialNetworkProps {
   name: string;
   url: string;
 }
+// Team section: grid of team member cards with photo, positions, and social links
 export const TeamSection = () => {
   const teamList: TeamProps[] = [
     {

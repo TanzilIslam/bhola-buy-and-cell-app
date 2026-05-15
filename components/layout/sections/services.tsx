@@ -40,6 +40,7 @@ const serviceList: ServiceProps[] = [
   },
 ];
 
+// Services section: grid of offered services, each optionally badged as PRO
 export const ServicesSection = () => {
   return (
     <section id="services" className="container py-24 sm:py-32">

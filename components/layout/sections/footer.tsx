@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { ChevronsDownIcon } from "lucide-react";
 import Link from "next/link";
 
+// Footer section: site logo, grouped navigation links, and copyright notice
 export const FooterSection = () => {
   return (
     <footer id="footer" className="container py-24 sm:py-32">

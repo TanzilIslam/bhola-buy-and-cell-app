@@ -40,6 +40,7 @@ const sponsors: sponsorsProps[] = [
   },
 ];
 
+// Sponsors section: horizontally scrolling marquee of platinum sponsor logos and names
 export const SponsorsSection = () => {
   return (
     <section id="sponsors" className="max-w-[75%] mx-auto pb-24 sm:pb-32">

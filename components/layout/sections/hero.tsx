@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 
+// Hero section: displays the main headline, CTA buttons, and a theme-aware hero image
 export const HeroSection = () => {
   const { theme } = useTheme();
   return (
