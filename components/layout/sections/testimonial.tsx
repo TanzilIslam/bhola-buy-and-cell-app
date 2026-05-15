@@ -76,6 +76,7 @@ const reviewList: ReviewProps[] = [
   },
 ];
 
+// Testimonials section: carousel of client reviews with star ratings and avatar
 export const TestimonialSection = () => {
   return (
     <section id="testimonials" className="container py-24 sm:py-32">

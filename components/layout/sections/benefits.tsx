@@ -35,6 +35,7 @@ const benefitList: BenefitsProps[] = [
   },
 ];
 
+// Benefits section: two-column layout listing key product benefits as numbered icon cards
 export const BenefitsSection = () => {
   return (
     <section id="benefits" className="container py-24 sm:py-32">

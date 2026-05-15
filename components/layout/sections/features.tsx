@@ -47,6 +47,7 @@ const featureList: FeaturesProps[] = [
   },
 ];
 
+// Features section: grid of icon cards highlighting what differentiates the product
 export const FeaturesSection = () => {
   return (
     <section id="features" className="container py-24 sm:py-32">

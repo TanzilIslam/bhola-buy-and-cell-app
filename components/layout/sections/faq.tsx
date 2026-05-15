@@ -43,6 +43,7 @@ const FAQList: FAQProps[] = [
   },
 ];
 
+// FAQ section: collapsible accordion list of frequently asked questions and answers
 export const FAQSection = () => {
   return (
     <section id="faq" className="container md:w-[700px] py-24 sm:py-32">

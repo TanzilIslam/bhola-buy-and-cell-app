@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+// Community section: Discord join call-to-action with gradient headline and button
 export const CommunitySection = () => {
   return (
     <section id="community" className="py-12 ">
