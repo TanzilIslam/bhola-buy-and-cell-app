@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { BottomNav } from "@/components/layout/bottom-nav";
 import { Navbar } from "@/components/layout/navbar";
 import { Sidebar } from "@/components/layout/sidebar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
@@ -28,8 +29,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Sidebar />
-          {/* pl-14 offsets content so it clears the fixed sidebar */}
-          <div className="pl-14">
+          <BottomNav />
+          {/* lg:pl-14 clears the sidebar on desktop; pb-24 clears the bottom nav on mobile/tablet */}
+          <div className="lg:pl-14 pb-24 lg:pb-0">
             <Navbar />
             {children}
           </div>
