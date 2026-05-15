@@ -1,4 +1,5 @@
 import { BenefitsSection } from "@/components/layout/sections/benefits";
+import { BuySellSection } from "@/components/layout/sections/buy-sell";
 import { CommunitySection } from "@/components/layout/sections/community";
 import { ContactSection } from "@/components/layout/sections/contact";
 import { FAQSection } from "@/components/layout/sections/faq";
@@ -43,6 +44,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <BuySellSection />
       <SponsorsSection />
       <BenefitsSection />
       <FeaturesSection />
