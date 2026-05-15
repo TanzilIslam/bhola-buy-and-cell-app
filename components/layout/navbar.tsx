@@ -1,6 +1,6 @@
-"use client";
 import { ChevronsDown } from "lucide-react";
 import Link from "next/link";
+import { AuthButton } from "./auth-button";
 import { ToggleTheme } from "./toogle-theme";
 
 export const Navbar = () => {
@@ -11,7 +11,10 @@ export const Navbar = () => {
         Bhola Buy &amp; Cell
       </Link>
 
-      <ToggleTheme />
+      <div className="flex items-center gap-2">
+        <ToggleTheme />
+        <AuthButton />
+      </div>
     </header>
   );
 };

@@ -61,3 +61,13 @@ export interface SellModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+// ─── Auth ─────────────────────────────────────────────────────────────────────
+
+/** Props accepted by the AuthModal component */
+export interface AuthModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  /** Which tab to open first */
+  defaultTab?: "login" | "signup";
+}
