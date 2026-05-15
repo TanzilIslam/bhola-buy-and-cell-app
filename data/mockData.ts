@@ -1,5 +1,204 @@
 import type { ProductCategory } from "@/types/modals";
 
+// ─── User Profile ─────────────────────────────────────────────────────────────
+
+export interface UserProfile {
+  name: string;
+  handle: string;
+  email: string;
+  phone: string;
+  avatar: string;
+  location: string;
+  memberSince: string;
+  bio: string;
+  stats: {
+    bought: number;
+    sold: number;
+    spent: number;
+    earned: number;
+  };
+}
+
+export const currentUser: UserProfile = {
+  name: "Bhola Ahmed",
+  handle: "@bhola.ahmed",
+  email: "bhola.ahmed@gmail.com",
+  phone: "+880 1711-234567",
+  avatar: "https://i.pravatar.cc/150?img=68",
+  location: "Dhaka, Bangladesh",
+  memberSince: "January 2024",
+  bio: "Tech enthusiast buying and selling second-hand electronics. I believe great gadgets should find new homes instead of collecting dust. Always open to good deals!",
+  stats: { bought: 12, sold: 8, spent: 4820, earned: 3650 },
+};
+
+// ─── Bought Items ─────────────────────────────────────────────────────────────
+
+export type PurchaseStatus = "delivered" | "in_transit" | "processing";
+
+export interface BoughtItem {
+  id: string;
+  productName: string;
+  productCategory: ProductCategory;
+  imageUrl: string;
+  price: number;
+  seller: { name: string; avatar: string };
+  purchasedAt: string;
+  status: PurchaseStatus;
+}
+
+export const boughtItems: BoughtItem[] = [
+  {
+    id: "bi-1",
+    productName: "MacBook Pro 14-inch M3",
+    productCategory: "Laptop",
+    imageUrl:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop",
+    price: 1450,
+    seller: { name: "David Park", avatar: "https://i.pravatar.cc/150?img=12" },
+    purchasedAt: "May 10, 2026",
+    status: "delivered",
+  },
+  {
+    id: "bi-2",
+    productName: "iPhone 15 Pro — 256 GB",
+    productCategory: "Phone",
+    imageUrl:
+      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&auto=format&fit=crop",
+    price: 780,
+    seller: { name: "Nina Torres", avatar: "https://i.pravatar.cc/150?img=9" },
+    purchasedAt: "May 5, 2026",
+    status: "delivered",
+  },
+  {
+    id: "bi-3",
+    productName: "Sony A7C II (body only)",
+    productCategory: "Camera",
+    imageUrl:
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&auto=format&fit=crop",
+    price: 1620,
+    seller: { name: "Aisha Malik", avatar: "https://i.pravatar.cc/150?img=44" },
+    purchasedAt: "May 13, 2026",
+    status: "in_transit",
+  },
+  {
+    id: "bi-4",
+    productName: "iPad Pro 12.9\" M2",
+    productCategory: "Tablet",
+    imageUrl:
+      "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=600&auto=format&fit=crop",
+    price: 740,
+    seller: { name: "Ethan Wright", avatar: "https://i.pravatar.cc/150?img=60" },
+    purchasedAt: "May 14, 2026",
+    status: "processing",
+  },
+  {
+    id: "bi-5",
+    productName: "PlayStation 5 Disc Edition",
+    productCategory: "Gaming Console",
+    imageUrl:
+      "https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=600&auto=format&fit=crop",
+    price: 380,
+    seller: { name: "Carlos Rivera", avatar: "https://i.pravatar.cc/150?img=52" },
+    purchasedAt: "Apr 28, 2026",
+    status: "delivered",
+  },
+  {
+    id: "bi-6",
+    productName: 'LG UltraWide 34" Monitor',
+    productCategory: "Desktop",
+    imageUrl:
+      "https://images.unsplash.com/photo-1527443224154-c4a573d5f5ec?w=600&auto=format&fit=crop",
+    price: 420,
+    seller: { name: "Lily Zhang", avatar: "https://i.pravatar.cc/150?img=38" },
+    purchasedAt: "Apr 20, 2026",
+    status: "delivered",
+  },
+];
+
+// ─── Sold Listings ────────────────────────────────────────────────────────────
+
+export type SaleStatus = "completed" | "pending_pickup" | "shipped";
+
+export interface SoldItem {
+  id: string;
+  productName: string;
+  productCategory: ProductCategory;
+  imageUrl: string;
+  price: number;
+  buyer: { name: string; avatar: string };
+  soldAt: string;
+  status: SaleStatus;
+}
+
+export const soldItems: SoldItem[] = [
+  {
+    id: "si-1",
+    productName: "Dell XPS 15 (2022)",
+    productCategory: "Laptop",
+    imageUrl:
+      "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&auto=format&fit=crop",
+    price: 980,
+    buyer: { name: "Alex Johnson", avatar: "https://i.pravatar.cc/150?img=11" },
+    soldAt: "May 8, 2026",
+    status: "completed",
+  },
+  {
+    id: "si-2",
+    productName: "Samsung Galaxy S23",
+    productCategory: "Phone",
+    imageUrl:
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop",
+    price: 460,
+    buyer: { name: "Sarah Lee", avatar: "https://i.pravatar.cc/150?img=5" },
+    soldAt: "May 12, 2026",
+    status: "shipped",
+  },
+  {
+    id: "si-3",
+    productName: "Canon EOS R50 + Kit Lens",
+    productCategory: "Camera",
+    imageUrl:
+      "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&auto=format&fit=crop",
+    price: 620,
+    buyer: { name: "Priya Nair", avatar: "https://i.pravatar.cc/150?img=25" },
+    soldAt: "May 14, 2026",
+    status: "pending_pickup",
+  },
+  {
+    id: "si-4",
+    productName: "Xbox Series X Bundle",
+    productCategory: "Gaming Console",
+    imageUrl:
+      "https://images.unsplash.com/photo-1605901309584-818e25960a8f?w=600&auto=format&fit=crop",
+    price: 420,
+    buyer: { name: "Jordan Kim", avatar: "https://i.pravatar.cc/150?img=33" },
+    soldAt: "Apr 30, 2026",
+    status: "completed",
+  },
+  {
+    id: "si-5",
+    productName: 'Samsung 65" QLED TV',
+    productCategory: "TV",
+    imageUrl:
+      "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&auto=format&fit=crop",
+    price: 750,
+    buyer: { name: "Olivia Chen", avatar: "https://i.pravatar.cc/150?img=47" },
+    soldAt: "Apr 22, 2026",
+    status: "completed",
+  },
+  {
+    id: "si-6",
+    productName: "iPad Air (5th Gen)",
+    productCategory: "Tablet",
+    imageUrl:
+      "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=600&auto=format&fit=crop",
+    price: 420,
+    buyer: { name: "Marcus Brown", avatar: "https://i.pravatar.cc/150?img=17" },
+    soldAt: "May 15, 2026",
+    status: "pending_pickup",
+  },
+];
+
 export interface BuyRequest {
   id: string;
   userName: string;
