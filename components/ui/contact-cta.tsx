@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { ContactModal, type ContactInfo } from "@/components/layout/modals/ContactModal";
+import { useAuth } from "@/contexts/auth-context";
 
 interface ContactCTAProps {
   contact: ContactInfo;
@@ -12,8 +14,18 @@ interface ContactCTAProps {
 }
 
 export function ContactCTA({ contact, product, role }: ContactCTAProps) {
+  const { isLoggedIn, openAuthModal } = useAuth();
   const [open, setOpen] = useState(false);
   const label = role === "seller" ? "Contact Seller" : "Contact Buyer";
+
+  function handleOpen() {
+    if (!isLoggedIn) {
+      toast.info(`Sign in to contact this ${role}`);
+      openAuthModal();
+      return;
+    }
+    setOpen(true);
+  }
 
   return (
     <>
@@ -21,7 +33,7 @@ export function ContactCTA({ contact, product, role }: ContactCTAProps) {
       <Button
         size="lg"
         className="w-full hidden lg:flex gap-2 font-semibold"
-        onClick={() => setOpen(true)}
+        onClick={handleOpen}
       >
         <MessageCircle className="size-4" />
         {label}
@@ -32,7 +44,7 @@ export function ContactCTA({ contact, product, role }: ContactCTAProps) {
         <Button
           size="lg"
           className="w-full gap-2 font-semibold shadow-2xl shadow-primary/30"
-          onClick={() => setOpen(true)}
+          onClick={handleOpen}
         >
           <MessageCircle className="size-4" />
           {label}

@@ -68,6 +68,8 @@ export interface SellModalProps {
 export interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
+  /** Called after a successful login or signup */
+  onSuccess?: () => void;
   /** Which tab to open first */
   defaultTab?: "login" | "signup";
 }

@@ -25,7 +25,7 @@ import {
 
 // ─── Login Form ───────────────────────────────────────────────────────────────
 
-function LoginForm() {
+function LoginForm({ onSuccess }: { onSuccess?: () => void }) {
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: "", password: "" },
@@ -34,9 +34,8 @@ function LoginForm() {
   function onSubmit(values: LoginFormValues) {
     // TODO: need to connect login with Supabase
     console.log("login", values);
-    toast.success("Welcome back!", {
-      description: "You're now signed in.",
-    });
+    toast.success("Welcome back!", { description: "You're now signed in." });
+    onSuccess?.();
   }
 
   return (
@@ -81,7 +80,7 @@ function LoginForm() {
 
 // ─── Sign Up Form ─────────────────────────────────────────────────────────────
 
-function SignupForm() {
+function SignupForm({ onSuccess }: { onSuccess?: () => void }) {
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
     defaultValues: { name: "", email: "", phone: "" },
@@ -93,6 +92,7 @@ function SignupForm() {
     toast.success(`Welcome, ${values.name.split(" ")[0]}!`, {
       description: "Your account has been created.",
     });
+    onSuccess?.();
   }
 
   return (
@@ -152,7 +152,7 @@ function SignupForm() {
 // ─── Auth Modal ───────────────────────────────────────────────────────────────
 
 // Single modal with Login / Sign Up tabs
-export const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) => {
+export const AuthModal = ({ isOpen, onClose, onSuccess, defaultTab = "login" }: AuthModalProps) => {
   const [activeTab, setActiveTab] = useState<"login" | "signup">(defaultTab);
 
   if (!isOpen) return null;
@@ -207,7 +207,9 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalPr
           </div>
 
           {/* Active form */}
-          {activeTab === "login" ? <LoginForm /> : <SignupForm />}
+          {activeTab === "login"
+            ? <LoginForm onSuccess={onSuccess} />
+            : <SignupForm onSuccess={onSuccess} />}
 
           {/* Footer hint */}
           <p className="text-center text-xs text-muted-foreground mt-5">
