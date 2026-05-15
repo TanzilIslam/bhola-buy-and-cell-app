@@ -313,6 +313,33 @@ export const buyRequests: BuyRequest[] = [
     address: "987 Cedar Lane, Hoboken, NJ",
     postedAt: "May 7, 2026",
   },
+  // ─── Bhola Ahmed's own buy requests ─────────────────────────────────────
+  {
+    id: "br-bhola-1",
+    userName: "Bhola Ahmed",
+    userAvatar: "https://i.pravatar.cc/150?img=68",
+    userPhone: "+880 1711-234567",
+    userEmail: "bhola.ahmed@gmail.com",
+    productCategory: "Tablet",
+    productName: 'iPad Pro 11" (M2 or newer)',
+    description: "Looking for 256 GB or higher. Apple Pencil compatibility a must.",
+    viewingLocation: "my_place",
+    address: "Dhanmondi, Dhaka",
+    postedAt: "May 14, 2026",
+  },
+  {
+    id: "br-bhola-2",
+    userName: "Bhola Ahmed",
+    userAvatar: "https://i.pravatar.cc/150?img=68",
+    userPhone: "+880 1711-234567",
+    userEmail: "bhola.ahmed@gmail.com",
+    productCategory: "Camera",
+    productName: "Sony A7 III (body only)",
+    description: "Full-frame for vlogging. Low shutter count preferred.",
+    viewingLocation: "seller_place",
+    address: "Gulshan, Dhaka",
+    postedAt: "May 11, 2026",
+  },
 ];
 
 export const sellListings: SellListing[] = [
@@ -417,5 +444,40 @@ export const sellListings: SellListing[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&auto=format&fit=crop",
     postedAt: "May 8, 2026",
+  },
+  // ─── Bhola Ahmed's own listings ─────────────────────────────────────────
+  {
+    id: "sl-bhola-1",
+    userName: "Bhola Ahmed",
+    userAvatar: "https://i.pravatar.cc/150?img=68",
+    userPhone: "+880 1711-234567",
+    userEmail: "bhola.ahmed@gmail.com",
+    productCategory: "Laptop",
+    productName: "MacBook Air M2 (2022)",
+    description:
+      "Space Gray, 8 GB RAM, 256 GB SSD. Light usage, near mint condition with original box.",
+    price: 870,
+    viewingLocation: "my_place",
+    address: "Dhanmondi, Dhaka",
+    imageUrl:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop",
+    postedAt: "May 13, 2026",
+  },
+  {
+    id: "sl-bhola-2",
+    userName: "Bhola Ahmed",
+    userAvatar: "https://i.pravatar.cc/150?img=68",
+    userPhone: "+880 1711-234567",
+    userEmail: "bhola.ahmed@gmail.com",
+    productCategory: "Phone",
+    productName: "Google Pixel 7 Pro",
+    description:
+      "256 GB, Obsidian. Excellent condition with original box, charger, and screen protector applied.",
+    price: 410,
+    viewingLocation: "buyer_place",
+    address: "Gulshan, Dhaka",
+    imageUrl:
+      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&auto=format&fit=crop",
+    postedAt: "May 10, 2026",
   },
 ];
