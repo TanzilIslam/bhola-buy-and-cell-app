@@ -1,11 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
-
-interface SellModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+import type { SellModalProps } from "@/types/modals";
 
 // Modal shown when the user clicks "Want to Sell"
 export const SellModal = ({ isOpen, onClose }: SellModalProps) => {
