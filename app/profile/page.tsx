@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { MyPosts } from "@/components/profile/my-posts";
 import { currentUser } from "@/data/mockData";
 import {
   CalendarDays,
@@ -20,7 +21,7 @@ export default function ProfilePage() {
     currentUser;
 
   return (
-    <main className="container max-w-2xl py-10">
+    <main className="container max-w-2xl py-10 space-y-6">
       <Card className="overflow-hidden">
         {/* Gradient banner */}
         <div className="h-28 bg-gradient-to-r from-primary via-primary/70 to-[#D247BF]" />
@@ -119,6 +120,8 @@ export default function ProfilePage() {
           </div>
         </CardContent>
       </Card>
+
+      <MyPosts />
     </main>
   );
 }

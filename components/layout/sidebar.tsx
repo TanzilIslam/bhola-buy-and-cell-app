@@ -15,7 +15,7 @@ export const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 z-30 h-screen w-14 border-r border-border bg-card flex flex-col items-center gap-2 pt-24 pb-6">
+    <aside className="hidden lg:flex fixed left-0 top-0 z-30 h-screen w-14 border-r border-border bg-card flex-col items-center gap-2 pt-24 pb-6">
       {navItems.map(({ href, icon: Icon, label }) => (
         <Link
           key={href}

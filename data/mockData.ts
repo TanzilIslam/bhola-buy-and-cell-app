@@ -203,6 +203,8 @@ export interface BuyRequest {
   id: string;
   userName: string;
   userAvatar: string;
+  userPhone: string;
+  userEmail: string;
   productCategory: ProductCategory;
   productName: string;
   description?: string;
@@ -215,6 +217,8 @@ export interface SellListing {
   id: string;
   userName: string;
   userAvatar: string;
+  userPhone: string;
+  userEmail: string;
   productCategory: ProductCategory;
   productName: string;
   description?: string;
@@ -230,6 +234,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-1",
     userName: "Alex Johnson",
     userAvatar: "https://i.pravatar.cc/150?img=11",
+    userPhone: "+1 212-555-0101",
+    userEmail: "alex.johnson@email.com",
     productCategory: "Laptop",
     productName: "MacBook Pro 14-inch M3",
     description:
@@ -242,6 +248,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-2",
     userName: "Sarah Lee",
     userAvatar: "https://i.pravatar.cc/150?img=5",
+    userPhone: "+1 718-555-0102",
+    userEmail: "sarah.lee@email.com",
     productCategory: "Phone",
     productName: "iPhone 15 Pro",
     description:
@@ -254,6 +262,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-3",
     userName: "Marcus Brown",
     userAvatar: "https://i.pravatar.cc/150?img=17",
+    userPhone: "+1 718-555-0103",
+    userEmail: "marcus.brown@email.com",
     productCategory: "Tablet",
     productName: "iPad Pro 12.9\" (2022+)",
     description:
@@ -266,6 +276,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-4",
     userName: "Priya Nair",
     userAvatar: "https://i.pravatar.cc/150?img=25",
+    userPhone: "+1 212-555-0104",
+    userEmail: "priya.nair@email.com",
     productCategory: "Camera",
     productName: "Sony A7 IV / A7C",
     description:
@@ -278,6 +290,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-5",
     userName: "Jordan Kim",
     userAvatar: "https://i.pravatar.cc/150?img=33",
+    userPhone: "+1 973-555-0105",
+    userEmail: "jordan.kim@email.com",
     productCategory: "Gaming Console",
     productName: "PlayStation 5 Disc Edition",
     description: "Standard disc edition only. Can pick up anywhere in NJ.",
@@ -289,6 +303,8 @@ export const buyRequests: BuyRequest[] = [
     id: "br-6",
     userName: "Olivia Chen",
     userAvatar: "https://i.pravatar.cc/150?img=47",
+    userPhone: "+1 201-555-0106",
+    userEmail: "olivia.chen@email.com",
     productCategory: "Desktop",
     productName: "Mac Mini M2 Pro",
     description:
@@ -297,6 +313,33 @@ export const buyRequests: BuyRequest[] = [
     address: "987 Cedar Lane, Hoboken, NJ",
     postedAt: "May 7, 2026",
   },
+  // ─── Bhola Ahmed's own buy requests ─────────────────────────────────────
+  {
+    id: "br-bhola-1",
+    userName: "Bhola Ahmed",
+    userAvatar: "https://i.pravatar.cc/150?img=68",
+    userPhone: "+880 1711-234567",
+    userEmail: "bhola.ahmed@gmail.com",
+    productCategory: "Tablet",
+    productName: 'iPad Pro 11" (M2 or newer)',
+    description: "Looking for 256 GB or higher. Apple Pencil compatibility a must.",
+    viewingLocation: "my_place",
+    address: "Dhanmondi, Dhaka",
+    postedAt: "May 14, 2026",
+  },
+  {
+    id: "br-bhola-2",
+    userName: "Bhola Ahmed",
+    userAvatar: "https://i.pravatar.cc/150?img=68",
+    userPhone: "+880 1711-234567",
+    userEmail: "bhola.ahmed@gmail.com",
+    productCategory: "Camera",
+    productName: "Sony A7 III (body only)",
+    description: "Full-frame for vlogging. Low shutter count preferred.",
+    viewingLocation: "seller_place",
+    address: "Gulshan, Dhaka",
+    postedAt: "May 11, 2026",
+  },
 ];
 
 export const sellListings: SellListing[] = [
@@ -304,6 +347,8 @@ export const sellListings: SellListing[] = [
     id: "sl-1",
     userName: "David Park",
     userAvatar: "https://i.pravatar.cc/150?img=12",
+    userPhone: "+1 212-555-0201",
+    userEmail: "david.park@email.com",
     productCategory: "Laptop",
     productName: "Dell XPS 15 (2023)",
     description:
@@ -319,6 +364,8 @@ export const sellListings: SellListing[] = [
     id: "sl-2",
     userName: "Nina Torres",
     userAvatar: "https://i.pravatar.cc/150?img=9",
+    userPhone: "+1 718-555-0202",
+    userEmail: "nina.torres@email.com",
     productCategory: "Phone",
     productName: "Samsung Galaxy S24 Ultra",
     description:
@@ -334,6 +381,8 @@ export const sellListings: SellListing[] = [
     id: "sl-3",
     userName: "Ethan Wright",
     userAvatar: "https://i.pravatar.cc/150?img=60",
+    userPhone: "+1 718-555-0203",
+    userEmail: "ethan.wright@email.com",
     productCategory: "Tablet",
     productName: "Samsung Galaxy Tab S9+",
     description:
@@ -349,6 +398,8 @@ export const sellListings: SellListing[] = [
     id: "sl-4",
     userName: "Aisha Malik",
     userAvatar: "https://i.pravatar.cc/150?img=44",
+    userPhone: "+1 212-555-0204",
+    userEmail: "aisha.malik@email.com",
     productCategory: "Camera",
     productName: "Canon EOS R6 Mark II",
     description:
@@ -364,6 +415,8 @@ export const sellListings: SellListing[] = [
     id: "sl-5",
     userName: "Carlos Rivera",
     userAvatar: "https://i.pravatar.cc/150?img=52",
+    userPhone: "+1 718-555-0205",
+    userEmail: "carlos.rivera@email.com",
     productCategory: "Gaming Console",
     productName: "Xbox Series X",
     description:
@@ -379,6 +432,8 @@ export const sellListings: SellListing[] = [
     id: "sl-6",
     userName: "Lily Zhang",
     userAvatar: "https://i.pravatar.cc/150?img=38",
+    userPhone: "+1 718-555-0206",
+    userEmail: "lily.zhang@email.com",
     productCategory: "TV",
     productName: 'LG C3 OLED 55"',
     description:
@@ -389,5 +444,40 @@ export const sellListings: SellListing[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&auto=format&fit=crop",
     postedAt: "May 8, 2026",
+  },
+  // ─── Bhola Ahmed's own listings ─────────────────────────────────────────
+  {
+    id: "sl-bhola-1",
+    userName: "Bhola Ahmed",
+    userAvatar: "https://i.pravatar.cc/150?img=68",
+    userPhone: "+880 1711-234567",
+    userEmail: "bhola.ahmed@gmail.com",
+    productCategory: "Laptop",
+    productName: "MacBook Air M2 (2022)",
+    description:
+      "Space Gray, 8 GB RAM, 256 GB SSD. Light usage, near mint condition with original box.",
+    price: 870,
+    viewingLocation: "my_place",
+    address: "Dhanmondi, Dhaka",
+    imageUrl:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop",
+    postedAt: "May 13, 2026",
+  },
+  {
+    id: "sl-bhola-2",
+    userName: "Bhola Ahmed",
+    userAvatar: "https://i.pravatar.cc/150?img=68",
+    userPhone: "+880 1711-234567",
+    userEmail: "bhola.ahmed@gmail.com",
+    productCategory: "Phone",
+    productName: "Google Pixel 7 Pro",
+    description:
+      "256 GB, Obsidian. Excellent condition with original box, charger, and screen protector applied.",
+    price: 410,
+    viewingLocation: "buyer_place",
+    address: "Gulshan, Dhaka",
+    imageUrl:
+      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&auto=format&fit=crop",
+    postedAt: "May 10, 2026",
   },
 ];

@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
+import { toast } from "sonner";
 import type { BuyModalProps } from "@/types/modals";
 import { buyFormSchema, type BuyFormValues } from "@/types/validationSchema";
 
@@ -50,6 +51,9 @@ export const BuyModal = ({ isOpen, onClose }: BuyModalProps) => {
     console.log(values);
     form.reset();
     onClose();
+    toast.success("Request posted!", {
+      description: `Looking for "${values.productName}" — sellers nearby will see it.`,
+    });
   }
 
   if (!isOpen) return null;
