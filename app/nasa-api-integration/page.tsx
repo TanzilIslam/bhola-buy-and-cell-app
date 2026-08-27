@@ -2,6 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ApodTab } from "@/components/nasa/apod-tab";
 import { NeoTab } from "@/components/nasa/neo-tab";
 import { DonkiTab } from "@/components/nasa/donki-tab";
+import { EpicTab } from "@/components/nasa/epic-tab";
 
 export default function NasaApiIntegrationPage() {
   return (
@@ -14,11 +15,14 @@ export default function NasaApiIntegrationPage() {
       </div>
 
       <Tabs defaultValue="apod">
-        <TabsList>
-          <TabsTrigger value="apod">APOD</TabsTrigger>
-          <TabsTrigger value="neo">Asteroids - NeoWs</TabsTrigger>
-          <TabsTrigger value="donki">DONKI</TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto">
+          <TabsList className="w-max">
+            <TabsTrigger value="apod">APOD</TabsTrigger>
+            <TabsTrigger value="neo">Asteroids - NeoWs</TabsTrigger>
+            <TabsTrigger value="donki">DONKI</TabsTrigger>
+            <TabsTrigger value="epic">EPIC</TabsTrigger>
+          </TabsList>
+        </div>
         <TabsContent value="apod">
           <ApodTab />
         </TabsContent>
@@ -27,6 +31,9 @@ export default function NasaApiIntegrationPage() {
         </TabsContent>
         <TabsContent value="donki">
           <DonkiTab />
+        </TabsContent>
+        <TabsContent value="epic">
+          <EpicTab />
         </TabsContent>
       </Tabs>
     </main>
