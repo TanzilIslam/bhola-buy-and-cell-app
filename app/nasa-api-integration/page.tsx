@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ApodTab } from "@/components/nasa/apod-tab";
+import { NeoTab } from "@/components/nasa/neo-tab";
 
 export default function NasaApiIntegrationPage() {
   return (
@@ -14,9 +15,13 @@ export default function NasaApiIntegrationPage() {
       <Tabs defaultValue="apod">
         <TabsList>
           <TabsTrigger value="apod">APOD</TabsTrigger>
+          <TabsTrigger value="neo">Asteroids - NeoWs</TabsTrigger>
         </TabsList>
         <TabsContent value="apod">
           <ApodTab />
+        </TabsContent>
+        <TabsContent value="neo">
+          <NeoTab />
         </TabsContent>
       </Tabs>
     </main>
